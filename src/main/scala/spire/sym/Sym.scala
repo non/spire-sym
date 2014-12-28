@@ -159,6 +159,9 @@ sealed abstract class Sym { lhs =>
       case Power(x, k) => x.hasUnboundNames || k.hasUnboundNames
     }
 
+  def subst(names: (String, Sym)*): Sym =
+    subst(names.toMap)
+
   def subst(names: Map[String, Sym]): Sym =
     this match {
       case Const(_) => this
