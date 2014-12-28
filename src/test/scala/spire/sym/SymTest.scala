@@ -14,7 +14,7 @@ import org.scalacheck.Prop._
 class LawTests extends FunSuite with Discipline {
 
   implicit val pred: Predicate[Sym] =
-    new Predicate[Sym] { def apply(a: Sym) = a =!= Sym.Zero }
+    Predicate(_ =!= Sym.Zero)
 
   implicit val arb: Arbitrary[Sym] =
     Arbitrary(arbitrary[Rational].map(Sym(_)))
